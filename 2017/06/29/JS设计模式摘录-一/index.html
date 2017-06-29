@@ -93,12 +93,16 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hello">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="##本文参考自 曾探《javascript 设计模式与开发实践》 单例模式所谓单例模式 就是 一个类仅有一个实例并且提供一个它访问全局的访问方法 透明单例模式现在我们有一个需求：在页面中掉一个方法 始终只创建一个div 。这种场景一般可以应用于创建遮罩层这种需求1234567891011121314151617181920var createDom = (function()&amp;#123;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS设计模式摘录(一)">
+<meta property="og:url" content="http://yoursite.com/2017/06/29/JS设计模式摘录-一/index.html">
 <meta property="og:site_name" content="Hello">
+<meta property="og:description" content="##本文参考自 曾探《javascript 设计模式与开发实践》 单例模式所谓单例模式 就是 一个类仅有一个实例并且提供一个它访问全局的访问方法 透明单例模式现在我们有一个需求：在页面中掉一个方法 始终只创建一个div 。这种场景一般可以应用于创建遮罩层这种需求1234567891011121314151617181920var createDom = (function()&amp;#123;">
+<meta property="og:updated_time" content="2017-06-29T07:59:02.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello">
+<meta name="twitter:title" content="JS设计模式摘录(一)">
+<meta name="twitter:description" content="##本文参考自 曾探《javascript 设计模式与开发实践》 单例模式所谓单例模式 就是 一个类仅有一个实例并且提供一个它访问全局的访问方法 透明单例模式现在我们有一个需求：在页面中掉一个方法 始终只创建一个div 。这种场景一般可以应用于创建遮罩层这种需求1234567891011121314151617181920var createDom = (function()&amp;#123;">
 
 
 
@@ -126,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/06/29/JS设计模式摘录-一/"/>
 
 
 
 
 
-  <title>Hello</title>
+  <title>JS设计模式摘录(一) | Hello</title>
   
 
 
@@ -157,9 +161,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-   page-home 
- ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -242,9 +244,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -270,9 +272,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/06/29/JS设计模式摘录-一/" itemprop="url">JS设计模式摘录(一)</a></h1>
+          <h1 class="post-title" itemprop="name headline">JS设计模式摘录(一)</h1>
         
 
         <div class="post-meta">
@@ -319,9 +319,7 @@
       
 
       
-        
-          
-            <p>##<br><strong>本文参考自 曾探《javascript 设计模式与开发实践》</strong></p>
+        <p>##<br><strong>本文参考自 曾探《javascript 设计模式与开发实践》</strong></p>
 <h2 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h2><p><strong>所谓单例模式 就是 一个类仅有一个实例并且提供一个它访问全局的访问方法</strong></p>
 <h3 id="透明单例模式"><a href="#透明单例模式" class="headerlink" title="透明单例模式"></a>透明单例模式</h3><p><strong>现在我们有一个需求：在页面中掉一个方法 始终只创建一个div 。这种场景一般可以应用于创建遮罩层这种需求</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">var createDom = (function()&#123;</div><div class="line">     var instance;</div><div class="line">var createDom = function( html )&#123; </div><div class="line">    if ( instance )&#123;</div><div class="line">        return instance; </div><div class="line">        &#125;</div><div class="line">this.html = html; this.init();</div><div class="line">return instance = this;</div><div class="line">&#125;;</div><div class="line">createDom.prototype.init = function()&#123;</div><div class="line">    var div = document.createElement( &apos;div&apos; );</div><div class="line">    div.innerHTML = this.html;</div><div class="line">    document.body.appendChild( div );</div><div class="line">&#125;;</div><div class="line">return createDom; </div><div class="line">&#125;)();</div><div class="line">var a = new createDom( &apos;div1&apos; ); </div><div class="line">var b = new createDom( &apos;div2&apos; );</div><div class="line"></div><div class="line">alert ( a === b ); // true</div></pre></td></tr></table></figure></p>
 <p><strong>单例模式 只有一个核心就是确保只有一个实例，并提供给全局访问</strong></p>
@@ -344,20 +342,27 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">//管理单例的逻辑 抽象出来</div><div class="line"> var getSingle = function( fn )&#123;</div><div class="line">         var result;</div><div class="line">         return function()&#123;</div><div class="line">         return result || ( result = fn .apply(this, arguments ) );</div><div class="line">&#125; &#125;;</div><div class="line"></div><div class="line">// 登陆悬浮窗的代码 </div><div class="line">var createLoginLayer = function()&#123;</div><div class="line">    var div = document.createElement( &apos;div&apos; );</div><div class="line">    div.innerHTML = &apos;我是登录浮窗&apos;;</div><div class="line">    div.style.display = &apos;none&apos;;</div><div class="line">    document.body.appendChild( div );</div><div class="line">    return div;</div><div class="line">  &#125;;</div><div class="line">var createSingleLoginLayer = getSingle( createLoginLayer );</div><div class="line">document.getElementById( &apos;loginBtn&apos; ).onclick = function()&#123; </div><div class="line">    var loginLayer = createSingleLoginLayer();</div><div class="line">        loginLayer.style.display = &apos;block&apos;;</div><div class="line">&#125;; </div><div class="line"></div><div class="line">// 创建一个iframe 的代码</div><div class="line">var createSingleIframe = getSingle( function()&#123;</div><div class="line">    var iframe = document.createElement ( &apos;iframe&apos; );</div><div class="line">    document.body.appendChild( iframe );</div><div class="line">    return iframe; </div><div class="line"> &#125;);</div><div class="line">document.getElementById( &apos;loginBtn&apos; ).onclick = function()&#123;</div><div class="line">     var loginLayer = createSingleIframe();</div><div class="line">loginLayer.src = &apos;http://baidu.com&apos;;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <p><strong>在这个例子中，我们把创建实例对象的职责和管理单例的职责分别放置在两个方法里，这两 个方法可以独立变化而互不影响，当它们连接在一起的时候，就完成了创建唯一实例对象的功能， 看起来是一件挺奇妙的事情</strong></p>
 
-          
+      
+    </div>
+
+    <div>
+      
         
+
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
     <div>
+      
+        
+
       
     </div>
 
@@ -365,274 +370,38 @@
       
 
       
-
-      
-
       
       
-        <div class="post-eof"></div>
+
       
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/20/JS设计模式摘录（一）/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="yangfan0095">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hello">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/06/20/JS设计模式摘录（一）/" itemprop="url">this</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-20T11:34:22+08:00">
-                2017-06-20
-              </time>
+              <a href="/2017/06/20/JS设计模式摘录（一）/" rel="next" title="this">
+                <i class="fa fa-chevron-left"></i> this
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p>##<br><strong>本文参考自 曾探《javascript 设计模式与开发实践》</strong></p>
-<h2 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h2><p><strong>所谓单例模式 就是 一个类仅有一个实例并且提供一个它访问全局的访问方法</strong></p>
-<h3 id="透明单例模式"><a href="#透明单例模式" class="headerlink" title="透明单例模式"></a>透明单例模式</h3><p><strong>现在我们有一个需求：在页面中掉一个方法 始终只创建一个div 。这种场景一般可以应用于创建遮罩层这种需求</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">var createDom = (function()&#123;</div><div class="line">     var instance;</div><div class="line">var createDom = function( html )&#123; </div><div class="line">    if ( instance )&#123;</div><div class="line">        return instance; </div><div class="line">        &#125;</div><div class="line">this.html = html; this.init();</div><div class="line">return instance = this;</div><div class="line">&#125;;</div><div class="line">createDom.prototype.init = function()&#123;</div><div class="line">    var div = document.createElement( &apos;div&apos; );</div><div class="line">    div.innerHTML = this.html;</div><div class="line">    document.body.appendChild( div );</div><div class="line">&#125;;</div><div class="line">return createDom; </div><div class="line">&#125;)();</div><div class="line">var a = new createDom( &apos;div1&apos; ); </div><div class="line">var b = new createDom( &apos;div2&apos; );</div><div class="line"></div><div class="line">alert ( a === b ); // true</div></pre></td></tr></table></figure></p>
-<p><strong>单例模式 只有一个核心就是确保只有一个实例，并提供给全局访问</strong></p>
-<p><strong>上面的单例模式是从 “类” 中来展现的 ，在以类为中心的语言中 这是很自然的做法。JS是一门无类型的语言。我们要实现单例模式只要抓住一点就是 只有一个实例 并提供给全局访问就可以了</strong>   </p>
-<p><strong>全局变量不是单例模式 ，但是在JavaScript开发中我们经常会把 全局变量当成单例来使用</strong></p>
-<p><strong>例如：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var a = &#123;&#125;</div></pre></td></tr></table></figure></p>
-<p><strong>js 声明全局变量会有很多问题比如 容易被其他模块篡改，不利于模块化在ES6 中推出了 let  const 这种块级作用域声明方法。我们在创建对象以及其方法的过程中最好使用对象的字面量方式如:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">let instance = &#123;</div><div class="line">    aaa:function()&#123;&#125;,</div><div class="line">    bbb:function()&#123;&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="惰性单例模式"><a href="#惰性单例模式" class="headerlink" title="惰性单例模式"></a>惰性单例模式</h3><p><strong>前面的例子我们在初始化的时候就进行了实例化， 所谓 惰性单例就是我们要在需要的时候才创建对象实例</strong></p>
-<p><strong>例子： 登陆弹窗，需求是点击登陆 弹出弹窗，</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;button id=&quot;loginBtn&quot;&gt;登录&lt;/button&gt;</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">var createLoginLayer = (function()&#123;</div><div class="line">     var div;</div><div class="line">    return function()&#123; </div><div class="line">        if ( !div )&#123;</div><div class="line">            div = document.createElement( &apos;div&apos; );</div><div class="line">            div.innerHTML = &apos;我是登录浮窗&apos;;</div><div class="line">            div.style.display = &apos;none&apos;;</div><div class="line">            document.body.appendChild( div );</div><div class="line">        &#125;</div><div class="line">    return div; </div><div class="line">&#125;</div><div class="line">&#125;)();</div><div class="line"></div><div class="line">document.getElementById( &apos;loginBtn&apos; ).onclick = function()&#123; </div><div class="line">    var loginLayer = createLoginLayer();</div><div class="line">        loginLayer.style.display = &apos;block&apos;;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p><strong>这个例子，我们点击的时候才创建 dom实例， 通过闭包， 下一次点击的时候还是返回之前的实例</strong></p>
-<h3 id="通用的惰性单例"><a href="#通用的惰性单例" class="headerlink" title="通用的惰性单例"></a>通用的惰性单例</h3><p><strong>上面的代码很好的实现了一个 我们的需求，但是还是存在一些问题</strong></p>
-<ul>
-<li>代码违反了单一职责的原则 ，创建对象和管理单例的逻辑都烦刚在createLoginLayer对象内部</li>
-<li>如果下次我们需要创建页面中唯一的iframe，或者 script 标签，用来跨域请求数据，就 必须得如法炮制，把 createLoginLayer 函数几乎照抄一遍</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var createIframe= (function()&#123;</div><div class="line">     var iframe;</div><div class="line">        return function()&#123;</div><div class="line">            if ( !iframe)&#123;</div><div class="line">                iframe= document.createElement( &apos;iframe&apos; );</div><div class="line">                iframe.style.display = &apos;none&apos;;</div><div class="line">                document.body.appendChild( iframe);</div><div class="line">            &#125;</div><div class="line">    return iframe; </div><div class="line">    &#125;</div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
-<p><strong>我们现在需要把不变的分离出来，管理单例的逻辑其实是可以抽象出来的，这个逻辑始终是： 用一个变量来标志是否创建过对象，如果是 ，则返回这个已经创建好的对象</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var obj;</div><div class="line">if( !obj)&#123;</div><div class="line">    obj = xxx;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><strong>我们来看优化后的代码</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">//管理单例的逻辑 抽象出来</div><div class="line"> var getSingle = function( fn )&#123;</div><div class="line">         var result;</div><div class="line">         return function()&#123;</div><div class="line">         return result || ( result = fn .apply(this, arguments ) );</div><div class="line">&#125; &#125;;</div><div class="line"></div><div class="line">// 登陆悬浮窗的代码 </div><div class="line">var createLoginLayer = function()&#123;</div><div class="line">    var div = document.createElement( &apos;div&apos; );</div><div class="line">    div.innerHTML = &apos;我是登录浮窗&apos;;</div><div class="line">    div.style.display = &apos;none&apos;;</div><div class="line">    document.body.appendChild( div );</div><div class="line">    return div;</div><div class="line">  &#125;;</div><div class="line">var createSingleLoginLayer = getSingle( createLoginLayer );</div><div class="line">document.getElementById( &apos;loginBtn&apos; ).onclick = function()&#123; </div><div class="line">    var loginLayer = createSingleLoginLayer();</div><div class="line">        loginLayer.style.display = &apos;block&apos;;</div><div class="line">&#125;; </div><div class="line"></div><div class="line">// 创建一个iframe 的代码</div><div class="line">var createSingleIframe = getSingle( function()&#123;</div><div class="line">    var iframe = document.createElement ( &apos;iframe&apos; );</div><div class="line">    document.body.appendChild( iframe );</div><div class="line">    return iframe; </div><div class="line"> &#125;);</div><div class="line">document.getElementById( &apos;loginBtn&apos; ).onclick = function()&#123;</div><div class="line">     var loginLayer = createSingleIframe();</div><div class="line">loginLayer.src = &apos;http://baidu.com&apos;;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p><strong>在这个例子中，我们把创建实例对象的职责和管理单例的职责分别放置在两个方法里，这两 个方法可以独立变化而互不影响，当它们连接在一起的时候，就完成了创建唯一实例对象的功能， 看起来是一件挺奇妙的事情</strong></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/20/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="yangfan0095">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hello">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/06/20/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-20T11:29:02+08:00">
-                2017-06-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-          
-        
+    <div class="post-spread">
       
     </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-  </section>
-
-  
+  </div>
 
 
           </div>
@@ -640,6 +409,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -659,8 +432,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -704,6 +486,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#单例模式"><span class="nav-number">1.</span> <span class="nav-text">单例模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#透明单例模式"><span class="nav-number">1.1.</span> <span class="nav-text">透明单例模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#惰性单例模式"><span class="nav-number">1.2.</span> <span class="nav-text">惰性单例模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通用的惰性单例"><span class="nav-number">1.3.</span> <span class="nav-text">通用的惰性单例</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -817,10 +615,10 @@
   
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
-  
+
 
   
 
