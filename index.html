@@ -94,11 +94,11 @@
 
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="yangfan0095">
+<meta property="og:title" content="yangfan0095的博客">
 <meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="yangfan0095">
+<meta property="og:site_name" content="yangfan0095的博客">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="yangfan0095">
+<meta name="twitter:title" content="yangfan0095的博客">
 
 
 
@@ -132,7 +132,7 @@
 
 
 
-  <title>yangfan0095</title>
+  <title>yangfan0095的博客</title>
   
 
 
@@ -170,7 +170,7 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">yangfan0095</span>
+        <span class="site-title">yangfan0095的博客</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -262,7 +262,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="yangfan0095">
+      <meta itemprop="name" content="yangfan0095的博客">
     </span>
 
     
@@ -321,7 +321,8 @@
       
         
           
-            <h2 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h2><p><strong>所谓单例模式 就是 一个类仅有一个实例并且提供一个它访问全局的访问方法</strong></p>
+            <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>  <strong>最近这段时间重构了一些项目， 期间遇到的最大的问题就是怎样保证代码的健壮性。很多情况下由于写的代码考虑不完善，使得重构的过程中有新的需求加入， 很多逻辑不得不推翻重写。在网上看了很多相关资料，受益匪浅。总的来说写代码也是要有套路的。一个好的套路能够让我们的代码有更好的可读性，可维护性，也能提高自身编码的层次。我看了一些设计模式有关的书，发现很多东西在写的时候其实是有规律可循，比如一些常见的设计模式。曾探《javascript 设计模式与开发实践》这本书写得非常好。虽然是前几年出版的，但是里面很多思想一点也不过时。于是我就有了一个想法，以这本书为大纲， 我想通过我的理解将书中的精要简略的写出来 …</strong></p>
+<h2 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h2><p><strong>所谓单例模式 就是 一个类仅有一个实例并且提供一个它访问全局的访问方法</strong></p>
 <h3 id="透明单例模式"><a href="#透明单例模式" class="headerlink" title="透明单例模式"></a>透明单例模式</h3><p><strong>现在我们有一个需求：在页面中掉一个方法 始终只创建一个div 。这种场景一般可以应用于创建遮罩层这种需求</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">var createDom = (function()&#123;</div><div class="line">     var instance;</div><div class="line">var createDom = function( html )&#123; </div><div class="line">    if ( instance )&#123;</div><div class="line">        return instance; </div><div class="line">        &#125;</div><div class="line">this.html = html; this.init();</div><div class="line">return instance = this;</div><div class="line">&#125;;</div><div class="line">createDom.prototype.init = function()&#123;</div><div class="line">    var div = document.createElement( &apos;div&apos; );</div><div class="line">    div.innerHTML = this.html;</div><div class="line">    document.body.appendChild( div );</div><div class="line">&#125;;</div><div class="line">return createDom; </div><div class="line">&#125;)();</div><div class="line">var a = new createDom( &apos;div1&apos; ); </div><div class="line">var b = new createDom( &apos;div2&apos; );</div><div class="line"></div><div class="line">alert ( a === b ); // true</div></pre></td></tr></table></figure></p>
 <p><strong>单例模式 只有一个核心就是确保只有一个实例，并提供给全局访问</strong></p>
 <p><strong>上面的单例模式是从 “类” 中来展现的 ，在以类为中心的语言中 这是很自然的做法。JS是一门无类型的语言。我们要实现单例模式只要抓住一点就是 只有一个实例 并提供给全局访问就可以了</strong>   </p>
