@@ -99,7 +99,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/06/30/JS-设计模式之-模板方法模式/index.html">
 <meta property="og:site_name" content="yangfan0095的博客">
 <meta property="og:description" content="模板方法模式模板方法主要由两部分构成， 第一部分是抽象父类，第二部分是具体实现的子类，通常我们在抽象父类中封装子类的算法框架，子类通过继承这个抽象类，也继承了整个算法结构要讲模板方法模式 首先来看一个著名的例子 Coffee or Tea，这个例子的原型来自于《Head First设计模式》泡一杯咖啡的步骤  把水煮沸 用沸水冲泡咖啡 把咖啡倒进杯子 加糖和牛奶123456789101112131">
-<meta property="og:updated_time" content="2017-06-30T03:14:01.000Z">
+<meta property="og:updated_time" content="2017-06-30T03:15:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS 设计模式之 模板方法模式">
 <meta name="twitter:description" content="模板方法模式模板方法主要由两部分构成， 第一部分是抽象父类，第二部分是具体实现的子类，通常我们在抽象父类中封装子类的算法框架，子类通过继承这个抽象类，也继承了整个算法结构要讲模板方法模式 首先来看一个著名的例子 Coffee or Tea，这个例子的原型来自于《Head First设计模式》泡一杯咖啡的步骤  把水煮沸 用沸水冲泡咖啡 把咖啡倒进杯子 加糖和牛奶123456789101112131">
@@ -342,11 +342,11 @@
 <h3 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h3><p>模板方法模式是一种严重依赖于抽象类的设计模式，在Java中，类分为两种，一种是抽象类，一种是具体类。具体类可以被实例化，抽象类不能被实例化。在前面的例子中，比如茶，你可以说给我来个新的茶，是指的一类具体的事物，但是你不能说给我来个新的饮料，因为茶和咖啡都是饮料，所以抽象类不能被实例化。由于抽象类不能被实例化，如果有人编写了一个抽象类，那么这个抽象类一定是用来被某些 具体类继承的</p>
 <p><strong>在静态类型语言中， 编译器对类型的检查总是一个绕不过的话题与困扰。虽然类型检查可以提高程序的安全性，但繁 琐而严格的类型检查也时常会让程序员觉得麻烦。把对象的真正类型隐藏在抽象类或者接口之 后，这些对象才可以被互相替换使用。这可以让我们的 Java 程序尽量遵守依赖倒置原则。除了用于向上转型，抽象类也可以表示一种契约。继承了这个抽象类的所有子类都将拥有跟 抽象类一致的接口方法，抽象类的主要作用就是为它的子类定义这些公共接口。如果我们在子类 中删掉了这些方法中的某一个，那么将不能通过编译器的检查，这在某些场景下是非常有用的。</strong></p>
 <h3 id="JavaScript-没有抽象类的缺点和解决方案"><a href="#JavaScript-没有抽象类的缺点和解决方案" class="headerlink" title="JavaScript 没有抽象类的缺点和解决方案"></a>JavaScript 没有抽象类的缺点和解决方案</h3><p>当我们在 JavaScript 中使用原型继承来模拟传统的类式继承时，并没有编译器帮 助我们进行任何形式的检查，我们也没有办法保证子类会重写父类中的“抽象方法”。</p>
-<p>如果我们的 Coffee 类或者 Tea 类忘记实现这 4 个方法中的一个呢?拿 brew 方法举例，如果 我们忘记编写 Coffee.prototype.brew 方法，那么当请求 coffee 对象的 brew 时，请求会顺着原型 链找到 Beverage“父类”对应的 Beverage.prototype.brew 方法，而 Beverage.prototype.brew 方法 到目前为止是一个空方法，这显然是不能符合我们需要的</p>
+<p>如果我们的 Coffee 类或者 Tea 类忘记实现这 4个方法中的一个呢?拿 brew 方法举例，如果 我们忘记编写 Coffee.prototype.brew 方法，那么当请求 coffee 对象的 brew 时，请求会顺着原型 链找到 Beverage“父类”对应的 Beverage.prototype.brew 方法，而 Beverage.prototype.brew 方法 到目前为止是一个空方法，这显然是不能符合我们需要的</p>
 <p>在 Java 中编译器会保证子类会重写父类中的抽象方法，但在 JavaScript 中却没有进行这些检 查工作。我们在编写代码的时候得不到任何形式的警告，完全寄托于程序员的记忆力和自觉性是 很危险的，特别是当我们使用模板方法模式这种完全依赖继承而实现的设计模式时</p>
 <p><strong>提供两种变通的解决方案</strong></p>
 <ul>
-<li>第 1 种方案是用鸭子类型来模拟接口检查，以便确保子类中确实重写了父类的方法。但模 4 拟接口检查会带来不必要的复杂性，而且要求程序员主动进行这些接口检查，这就要求<br> 我们在业务代码中添加一些跟业务逻辑无关的代码。</li>
+<li>第 1 种方案是用鸭子类型来模拟接口检查，以便确保子类中确实重写了父类的方法。但模拟接口检查会带来不必要的复杂性，而且要求程序员主动进行这些接口检查，这就要求<br> 我们在业务代码中添加一些跟业务逻辑无关的代码。</li>
 <li>第 2 种方案是让 Beverage.prototype.brew 等方法直接抛出一个异常，如果因为粗心忘记编写 Coffee.prototype.brew 方法，那么至少我们会在程序运行时得到一个错误.<pre><code>Beverage.prototype.brew = function(){
   throw new Error( &apos;子类必须重写 brew 方法&apos; );
 };
